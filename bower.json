@@ -1,0 +1,7 @@
+{
+  "name": "ezgrid",
+  "version": "1.0.0",
+  "homepage": "https://github.com/queyenth/ezgrid",
+  "main": ["*.*"],
+  "ignore": []
+}

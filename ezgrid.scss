@@ -1,0 +1,135 @@
+$_grid-full-min: 1200px;
+$_grid-medium-min: 992px;
+$_grid-small-min: 768px;
+
+$_grid-gutter-width: 30px;
+
+$_grid-column-count: 12;
+
+$_grid-full-width: 1170px;
+$_grid-medium-width: 970px;
+$_grid-small-width: 750px;
+
+.container {
+  width: auto;
+  @media screen and (min-width: $_grid-full-min) {
+    width: $_grid-full-width;
+  }
+  @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
+    width: $_grid-medium-width;
+  }
+  @media screen and (max-width: $_grid-medium-min) {
+    width: $_grid-small-width;
+  }
+}
+
+.container-center {
+  margin: 0 auto;
+}
+
+.clearfix, .row:after {
+  clear: both;
+}
+
+@mixin width-hidden() {
+  display: none;
+}
+
+@mixin width-grid-size($i, $width) {
+  width: $i / $_grid-column-count * $width;
+  float: left;
+}
+
+@mixin width-grid($width) {
+  @media screen and (min-width: $_grid-full-min) {
+    @include width-grid-size($width, $_grid-full-width);
+  }
+  @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
+    @include width-grid-size($width, $_grid-medium-width);
+  }
+  @media screen and (max-width: $_grid-medium-min) {
+    @include width-grid-size($width, $_grid-small-width);
+  }
+}
+
+@mixin grid-offset($i, $_grid-width) {
+  margin-left: $i / $_grid-column-count * $_grid-width;
+}
+
+.width-hidden-small {
+  @media screen and (max-width: $_grid-small-min) {
+    @include width-hidden();
+  }
+}
+
+.width-hidden-medium {
+  @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
+    @include width-hidden();
+  }
+}
+
+.width-hidden-large {
+  @media screen and (min-width: $_grid-full-min) {
+    @include width-hidden();
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-#{$i} {
+    @include width-grid($i);
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-large-#{$i} {
+    @media screen and (min-width: $_grid-full-min) {
+      @include width-grid-size($i, $_grid-full-width);
+    }
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-medium-#{$i} {
+    @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
+      @include width-grid-size($i, $_grid-medium-width);
+    }
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-small-#{$i} {
+    @media screen and (max-width: $_grid-medium-min) {
+      @include width-grid-size($i, $_grid-small-width);
+    }
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-offset-#{$i} {
+    @include grid-offset($i, $_grid-full-width);
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-large-offset-#{$i} {
+    @media screen and (min-width: $_grid-full-min) {
+      @include grid-offset($i, $_grid-full-width);
+    }
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-medium-offset-#{$i} {
+    @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
+      @include grid-offset($i, $_grid-medium-width);
+    }
+  }
+}
+
+@for $i from 1 to $_grid-column-count+1 {
+  .width-small-offset-#{$i} {
+    @media screen and (max-width: $_grid-medium-min) {
+      @include grid-offset($i, $_grid-small-width);
+    }
+  }
+}
