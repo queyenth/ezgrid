@@ -78,55 +78,34 @@ $_grid-small-width: 750px;
   .width-#{$i} {
     @include width-grid($i);
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-large-#{$i} {
     @media screen and (min-width: $_grid-full-min) {
       @include width-grid-size($i, $_grid-full-width);
     }
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-medium-#{$i} {
     @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
       @include width-grid-size($i, $_grid-medium-width);
     }
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-small-#{$i} {
     @media screen and (max-width: $_grid-medium-min) {
       @include width-grid-size($i, $_grid-small-width);
     }
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-offset-#{$i} {
     @include grid-offset($i, $_grid-full-width);
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-large-offset-#{$i} {
     @media screen and (min-width: $_grid-full-min) {
       @include grid-offset($i, $_grid-full-width);
     }
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-medium-offset-#{$i} {
     @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
       @include grid-offset($i, $_grid-medium-width);
     }
   }
-}
-
-@for $i from 1 to $_grid-column-count+1 {
   .width-small-offset-#{$i} {
     @media screen and (max-width: $_grid-medium-min) {
       @include grid-offset($i, $_grid-small-width);
