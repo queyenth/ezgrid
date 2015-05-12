@@ -1,2 +1,7 @@
-# ezgrid
-Just a ez grid written in SCSS
+# EzGrid
+Just ezgrid written in SCSS
+
+## Install
+```
+bower install ezgrid
+```
