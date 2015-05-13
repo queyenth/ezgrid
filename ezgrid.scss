@@ -6,20 +6,20 @@ $_grid-gutter-width: 30px;
 
 $_grid-column-count: 12;
 
-$_grid-full-width: 1170px;
-$_grid-medium-width: 970px;
-$_grid-small-width: 750px;
+$_grid-full-width: 1140px;
+$_grid-medium-width: 940px;
+$_grid-small-width: 720px;
 
 .container {
   width: auto;
   @media screen and (min-width: $_grid-full-min) {
-    width: $_grid-full-width;
+    width: ($_grid-full-width+$_grid-gutter-width);
   }
   @media screen and (min-width: $_grid-medium-min) and (max-width: $_grid-full-min) {
-    width: $_grid-medium-width;
+    width: ($_grid-medium-width+$_grid-gutter-width);
   }
   @media screen and (max-width: $_grid-medium-min) {
-    width: $_grid-small-width;
+    width: ($_grid-small-width+$_grid-gutter-width);
   }
 }
 
@@ -27,8 +27,16 @@ $_grid-small-width: 750px;
   margin: 0 auto;
 }
 
-.clearfix, .row:after {
+.clearfix {
   clear: both;
+}
+
+.row {
+  width: 100%;
+  float: left;
+  &:after {
+    clear: both;
+  }
 }
 
 @mixin width-hidden() {
@@ -36,11 +44,11 @@ $_grid-small-width: 750px;
 }
 
 @mixin width-grid-size($i, $width) {
-  width: $i / $_grid-column-count * $width;
+  width: $i / $_grid-column-count * $width - $_grid-gutter-width;
   position: relative;
   min-height: 1px;
   float: left;
-  padding: 0px 15px;
+  padding: 0px ($_grid-gutter-width / 2);
 }
 
 @mixin width-grid($width) {
