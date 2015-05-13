@@ -37,7 +37,10 @@ $_grid-small-width: 750px;
 
 @mixin width-grid-size($i, $width) {
   width: $i / $_grid-column-count * $width;
+  position: relative;
+  min-height: 1px;
   float: left;
+  padding: 0px 15px;
 }
 
 @mixin width-grid($width) {
